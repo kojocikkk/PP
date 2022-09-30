@@ -1,0 +1,54 @@
+# 1. Poproś użytkownika o hasło, a następnie sprawdź, czy spełnia ono reguły bezpieczeństwa.
+# 2. Hasło powinno mieć minimum jedną małą literę, jedną wielką literę i jeden znak specjalny.
+# 3. Hasło nie może zawierać spacji!  (wewnętrzny wymóg klienta wynikający z ograniczeń ich systemu teleinformatycznego)
+# 4. Hasło musi mieć minimum 8 znaków.
+# 5. Jeśli hasło jest niepoprawne, wyświetl raport w punktach co należy zmienić.
+
+
+
+password= input('Podaj hasło : ' )
+
+
+big_letter = False
+small_letter = False
+special= False
+
+space = False 
+long = len(password) >=8 
+
+
+for char in password:
+    if char.isupper():
+        big_letter= True
+    elif char.islower():
+        small_letter= True
+    elif char.isspace():
+        space= True
+    else:
+        special = True
+
+
+
+Poprawnosc = big_letter and small_letter and special and long and not space
+
+print(Poprawnosc)
+if Poprawnosc == True:
+    print('Twoje hasło jest poprawne')
+else:
+    print('wpisz swoje hasło zgodnie z wytycznymi')
+    if big_letter == False:
+        print('Brakuje dużej litery')
+    if small_letter == False:
+        print('Brakuje małej litery')
+    if special == False:
+        print('Brakuje znaku specjalnego ') 
+    if space == True:
+        print('W haśle jest spacja')
+    if long == False:
+        print('Hasło jest za krótkie')
+
+
+
+
+
+
