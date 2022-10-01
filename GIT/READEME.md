@@ -1,3 +1,7 @@
 #Demo test GIT
-##Test project for learning Git with Python and Pycharm!
-### This is a test of hastags 
+##Project for getting to know Git with Python and Pycharm! from jaktestowac.pl
+### This is a test of hashtags
+
+![alt text](https://con.jaktestowac.pl/wp-content/uploads/brand/jaktestowac_small.png)
+
+
