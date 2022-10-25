@@ -73,3 +73,4 @@ try:
 except json.JSONDecodeError:
     print('Brak kursu dla danego dnia!')
 
+
