@@ -9,6 +9,7 @@
 # 2. Tabele kursów są publikowane tylko w dni robocze. Przeczytaj w dokumentacji co się stanie, gdy zapytasz o kurs z weekendu lub innego dnia wolnego od pracy?
 # 3. Twój program przyjmuje walutę oraz datę jako dwa argumenty wiersza poleceń. Jeśli jednak nie zostaną podane, wówczas poproś użytkownika o podanie tych dwóch informacji przy pomocy funkcji input.
 from datetime import datetime
+from msilib.schema import Error
 from dateutil import parser
 import sys
 import requests
@@ -18,53 +19,57 @@ import json
 #URL = r'http://api.nbp.pl/api/exchangerates/rates/a/WALUTA/data/?format=json'
 #https://api.nbp.pl/api/exchangerates/rates/a/gbp/2022-01-12/?format=json
 
-WALUTA=None
-DATA= None
+waluta= None
+data= None
+i=0
+tabela_walut =f'http://api.nbp.pl/api/exchangerates/tables/a/'
+try:
+    file = requests.get(tabela_walut)
+    b = file.json()
+except json.JSONDecodeError:
+    print(' brak kursów walut')
 
-DATE_FORMAT=("%Y-%m-%d")
+kod =None
+kody_walut=[]
+for item in b:
+    item =b[0]['rates']
+    #print(item)
+    for item2  in item:
+        for item3 in item2.values():
+            if len(str(item3)):
+                kody_walut.append(item3) 
+        
+    i=+1
+    print(kody_walut)
 
+try:
+    len(sys.argv[1]) ==3
+    waluta = sys.argv[1]
+        
+except:
+    ValueError('Podałeś błedną walutę!')
+    waluta=input("Podaj prawidłową walutę: ")
 
+waluta= waluta.upper()   
 
-URL = f'http://api.nbp.pl/api/exchangerates/rates/a/{WALUTA}/{DATA}/?format=json'
+try:
+    data=sys.argv[2]     
+except:
+    ValueError('Brak daty!')
+    data=input("Podaj datę: ")
+
+data= parser.parse(data)
+data=data.date()
+
+URL = f'http://api.nbp.pl/api/exchangerates/rates/a/{waluta}/{data}/?format=json'
+
 print(URL)
-#file = requests.get(URL)
-#a = file.json()
-#print(file)
-#print(a['rates'][0]['mid'])
-##print(a['code'])
-
 try:
     file = requests.get(URL)
     a = file.json()
-    print(file)
-    print(a['rates'][0]['mid'])
-  
+    
+    kurs=(a['rates'][0]['mid'])
+    print(f'kurs {waluta} na dzień {data} wynosi {kurs}')
 except json.JSONDecodeError:
     print('Brak kursu dla danego dnia!')
-for sys_arg in sys.argv:
-    file = requests.get(URL)
-    a = file.json()
-    if len(sys.argv)==3:
-        waluta = sys.argv[1]
-        kurs= a['rates'][0]['mid']
-        data = sys.argv[2]
-        data= parser.parse(DATA)
-        data=data.date()
-        print(f'kurs {waluta} na dzień {data} wynosi {kurs}')
 
-    elif len(sys.argv)<3 and WALUTA ==None and DATA is not None:
-        waluta =input('Podaj walute:')
-        kurs= a['rates'][0]['mid']
-        data = sys.argv[2]
-        data= parser.parse(DATA)
-        data=data.date()
-        print(f'kurs {waluta} na dzień {data} wynosi {kurs}')
-
-    elif len(sys.argv)<3 and WALUTA is not None and DATA is None:
-        waluta = sys.argv[1]
-        kurs= a['rates'][0]['mid']
-        data = input('Podaj datę:')
-        print(f'kurs {waluta} na dzień {data} wynosi {kurs}')
-
-    else:
-        print('Podano za dużo argumentów')
