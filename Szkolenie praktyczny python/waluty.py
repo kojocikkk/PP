@@ -34,32 +34,42 @@ kody_walut=[]
 for item in b:
     item =b[0]['rates']
     #print(item)
-    for item2  in item:
-        for item3 in item2.values():
-            if len(str(item3)):
-                kody_walut.append(item3) 
-        
-    i=+1
-    print(kody_walut)
+    for item2 in item:
+        for item3 in item2.items():
+            if item3[0]=="code":
+                kody_walut.append(item3[1])
+                   
+            i=+1
+#print(kody_walut)
 
 try:
     len(sys.argv[1]) ==3
     waluta = sys.argv[1]
+    if waluta in kody_walut:
+        print("--------")
+    else:
+        print(f'Podałeś błedną walutę! Nie ma takiej waluty jak {waluta} wybierz jedną z walut :\n{kody_walut}')
+        waluta=input("Podaj prawidłową walutę: ")
         
 except:
-    ValueError('Podałeś błedną walutę!')
+    ValueError('Nie podałeś waluty!')
     waluta=input("Podaj prawidłową walutę: ")
 
 waluta= waluta.upper()   
+
 
 try:
     data=sys.argv[2]     
 except:
     ValueError('Brak daty!')
     data=input("Podaj datę: ")
+    
+try:
+    data= parser.parse(data)
+    data=data.date()
+except:
+    ValueError('Błedna data')
 
-data= parser.parse(data)
-data=data.date()
 
 URL = f'http://api.nbp.pl/api/exchangerates/rates/a/{waluta}/{data}/?format=json'
 
@@ -70,7 +80,10 @@ try:
     
     kurs=(a['rates'][0]['mid'])
     print(f'kurs {waluta} na dzień {data} wynosi {kurs}')
+    
 except json.JSONDecodeError:
     print('Brak kursu dla danego dnia!')
+
+
 
 
