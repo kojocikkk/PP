@@ -45,11 +45,11 @@ for item in b:
 try:
     len(sys.argv[1]) ==3
     waluta = sys.argv[1]
-    if waluta in kody_walut:
-        print("--------")
-    else:
-        print(f'Podałeś błedną walutę! Nie ma takiej waluty jak {waluta} wybierz jedną z walut :\n{kody_walut}')
+    while waluta not in kody_walut:
+        print(f'Podałeś błedną walutę! Nie ma takiej waluty jak {waluta} wybierz jedną z walut :\n {kody_walut}')
         waluta=input("Podaj prawidłową walutę: ")
+    
+        
         
 except:
     ValueError('Nie podałeś waluty!')
@@ -63,7 +63,7 @@ try:
 except:
     ValueError('Brak daty!')
     data=input("Podaj datę: ")
-    
+
 try:
     data= parser.parse(data)
     data=data.date()
