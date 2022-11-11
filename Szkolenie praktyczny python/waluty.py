@@ -1,23 +1,5 @@
-# Pomóż szwajcarskiemu bankowi HSBC tworząc aplikację, która odczytuje i analizuje dane z Narodowego Banku Polskiego (NBP) udostępnione przez API i podaje ile była warta wskazana waluta we wskazanym dniu.
-
-# Dzięki Tobie HSBC będzie mógł poprawnie wystawiać w Polsce faktury w walucie obcej - przepisy wymagają, aby kwoty na takich fakturach przeliczać na złotówki wg kursów NBP z określonych dni.
-
-# 1. Zapoznaj się z opisem API: http://api.nbp.pl.
-#    1. Ustal jak wygląda URL, pod którym znajdziesz kurs danej waluty z danego dnia?
-#    2. W jakim formacie musi być data?
-#    3. Co trzeba zmienić w URLu, aby otrzymać odpowiedź w JSONie zamiast XMLu?
-# 2. Tabele kursów są publikowane tylko w dni robocze. Przeczytaj w dokumentacji co się stanie, gdy zapytasz o kurs z weekendu lub innego dnia wolnego od pracy?
-# 3. Twój program przyjmuje walutę oraz datę jako dwa argumenty wiersza poleceń. Jeśli jednak nie zostaną podane, wówczas poproś użytkownika o podanie tych dwóch informacji przy pomocy funkcji input.
-from datetime import datetime
-from msilib.schema import Error
-from dateutil import parser
-import sys
-import requests
-import glob
-import os
-import json
-#URL = r'http://api.nbp.pl/api/exchangerates/rates/a/WALUTA/data/?format=json'
-#https://api.nbp.pl/api/exchangerates/rates/a/gbp/2022-01-12/?format=json
+#Below code witch is checking the currency code from NBP website.
+#The code also check currency code- also with NBP website.
 
 waluta= None
 data= None
@@ -48,12 +30,12 @@ try:
     while waluta not in kody_walut:
         print(f'Podałeś błedną walutę! Nie ma takiej waluty jak {waluta} wybierz jedną z walut :\n {kody_walut}')
         waluta=input("Podaj prawidłową walutę: ")
-    
-        
-        
+
 except:
     ValueError('Nie podałeś waluty!')
-    waluta=input("Podaj prawidłową walutę: ")
+    waluta=input("Nie podałeś waluty. Podaj prawidłową walutę: ")
+    while waluta not in kody_walut:
+        print(f'Podałeś błedną walutę! Nie ma takiej waluty jak {waluta} wybierz jedną z walut :\n {kody_walut}')
 
 waluta= waluta.upper()   
 
@@ -83,7 +65,3 @@ try:
     
 except json.JSONDecodeError:
     print('Brak kursu dla danego dnia!')
-
-
-
-
