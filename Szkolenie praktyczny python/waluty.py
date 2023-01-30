@@ -1,5 +1,13 @@
 #Below code witch is checking the currency code from NBP website.
 #The code also check currency code- also with NBP website.
+from datetime import datetime
+from msilib.schema import Error
+from dateutil import parser
+import sys
+import requests
+import glob
+import os
+import json
 
 waluta= None
 data= None
