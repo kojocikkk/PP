@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Model</title>
+<link href="css/ea.css" rel="stylesheet" type="text/css" />
+<script>
+const guid_look = new Map([['47917940-25DC-424D-987C-4112704C49E4', 'EA1/EA1.htm'],
+['7624283D-A639-4781-9B93-25574BD53B8B', 'EA1/EA3.htm'],
+['8A4B98C1-9B81-4CA0-8C28-90E9EC14B4AD', 'EA1/EA4.htm'],
+['7F868A04-6E21-45F2-BC60-FA75C5768C56', 'EA1/EA5.htm'],
+['815B517E-8D8A-4871-B5DE-024D8C11026A', 'EA1/EA6.htm'],
+['AEF529AB-E319-49D3-A530-9C863BA477D4', 'EA1/EA7.htm'],
+['26CEB6F7-55B4-417B-AA04-09B3D8263181', 'EA1/EA8.htm'],
+['CB22F120-FE99-45AE-9929-4E73EBC0B71A', 'EA1/EA9.htm'],
+['11FB1243-E486-45F6-A6AE-25EEB424147C', 'EA1/EA10.htm'],
+['072A2339-D93F-4785-B40B-7D78653A4A3D', 'EA1/EA11.htm'],
+['2CCA0F6B-7700-41DF-9001-5FA314486A1E', 'EA1/EA12.htm'],
+['D66EBF9D-2249-4145-88ED-A91AF7B569B1', 'EA1/EA13.htm'],
+['00F9BFE2-565D-48D5-8ED8-B6F853401E1F', 'EA1/EA14.htm'],
+['8C5AB9D8-5788-41DB-9364-88E48742F08F', 'EA2/EA15.htm'],
+['C60E820B-120D-404D-BD0F-531E41F34D99', 'EA2/EA17.htm'],
+['14341510-6CC3-46C7-9035-7687615FDF82', 'EA2/EA18.htm'],
+['B370B449-0E7E-4255-A4E7-0F1DCEEBCE64', 'EA2/EA19.htm'],
+['0E06C294-3A90-4301-AC46-FA68E3E5FDC3', 'EA2/EA20.htm'],
+['99177F85-A113-4FE2-B8F5-F4D6F29DDD11', 'EA2/EA21.htm'],
+['FE042814-956F-414A-ACDA-ACD1F18B3AF0', 'EA2/EA22.htm'],
+['61CCCB55-6AE4-40B2-B0B8-A9780625F7B9', 'EA2/EA23.htm'],
+['C7D19F00-D578-4DC2-9245-A5B1D11728EE', 'EA2/EA24.htm'],
+['193F5EB7-1D16-49C7-85EF-C5ADC334990A', 'EA2/EA25.htm'],
+['85913CC5-4DC4-49C5-931C-4706DB309A1E', 'EA2/EA26.htm'],
+['CD182B40-DBBC-4BD2-A820-CE66DD607F8C', 'EA2/EA27.htm'],
+['82A92E0A-ABEE-4B38-B515-80D392936D56', 'EA2/EA28.htm'],
+['739EAD87-875B-4A06-B121-CABB018DF2F5', 'EA2/EA29.htm'],
+['2AF74AC3-EF91-4EF7-B97C-7F7331602638', 'EA2/EA30.htm'],
+['94234058-7EF0-41FB-BB75-210F36916A3C', 'EA2/EA31.htm'],
+['405507BD-0880-4BDE-9140-305CC4A921E4', 'EA2/EA32.htm'],
+['6D52DFE9-A334-4B00-B179-4AF7835D28A6', 'EA2/EA33.htm'],
+['1C1BB70B-A858-49B0-81BA-83587FEBEB54', 'EA2/EA34.htm'],
+['4C01EF50-28F8-442C-AE40-CAE347847D0A', 'EA2/EA35.htm'],
+['3EFC10A7-8439-49BD-BFC0-6403EA53BD73', 'EA3/EA36.htm'],
+['05E2EDE4-6A05-4C1C-9C00-7CA8CE21C052', 'EA3/EA38.htm'],
+['020C3215-C84A-47CC-9BEF-C4E53D779F28', 'EA3/EA39.htm'],
+['586DBB03-37EA-47C5-946B-706FE05D728F', 'EA3/EA40.htm'],
+['F6ECECF8-A652-457A-8773-260CB144D877', 'EA3/EA41.htm'],
+['0231A739-507D-4A34-9032-C5798585D0A7', 'EA3/EA42.htm'],
+['2F46A041-B060-401F-AFBC-DFE1105F1EC5', 'EA3/EA43.htm'],
+['67B0C114-6039-4B22-84E2-9F95A8315042', 'EA3/EA44.htm'],
+['94D9E9A2-A573-4C61-9F3A-4686B78A76E4', 'EA3/EA45.htm'],
+['D6E248F6-80FD-4683-A542-BEB1528173E7', 'EA3/EA46.htm'],
+['9934C631-42C6-4EF0-838B-DBB789746D5F', 'EA3/EA47.htm'],
+['FF7E0D9F-77CD-4DD3-9317-A0F9C45E7B57', 'EA3/EA48.htm'],
+['0A3AF59E-94BF-4CBF-8D7C-F3341F26BC33', 'EA3/EA49.htm'],
+['6BE09397-E005-45C2-97DF-387E813504E8', 'EA3/EA50.htm'],
+['B5CD36EF-C7DB-45D6-9998-7D8CF3C2C845', 'EA3/EA51.htm'],
+['74C89712-4F6C-4DA0-8851-306DDA6D75A0', 'EA3/EA52.htm'],
+['CB3E8F7A-CA60-47CB-B49E-B7D314321C05', 'EA3/EA53.htm'],
+['4081607E-4228-405A-BAC8-BA3FFBF499E5', 'EA3/EA54.htm'],
+['AF2B6373-581F-48E8-818E-C3889DF72FB9', 'EA3/EA55.htm'],
+['626D7A8D-C5F3-466D-9FA9-6DA3FF0B089F', 'EA3/EA56.htm'],
+['F13E083E-8247-4061-8518-769E5D7025B4', 'EA3/EA57.htm'],
+['37E65A5A-E815-49A5-A150-11B01DB0D5EF', 'EA3/EA58.htm'],
+['B160D76F-7C7D-491A-8F9E-5188057F2364', 'EA3/EA59.htm'],
+['CBEE06C5-0BDD-46FC-845B-1D194EE92808', 'EA3/EA60.htm'],
+['871E4CEC-E93B-4728-A534-30015F504177', 'EA3/EA61.htm'],
+['1DB21E61-AE97-419D-9209-7BC3089C283A', 'EA3/EA62.htm'],
+['D7793ECF-6ABC-4B28-9763-4C4B906D34D8', 'EA3/EA63.htm'],
+['0E8AB458-1EBD-434E-90B2-0C1F8735E0CB', 'EA3/EA64.htm'],
+['FEC1CCD3-6EAD-47FD-B2A7-9B8FC8B258E2', 'EA4/EA65.htm'],
+['CFD264BE-985A-4612-83E1-72B03679544F', 'EA4/EA67.htm'],
+['36B4004E-41CD-4298-9C3C-D1D17538201D', 'EA4/EA68.htm'],
+['D62C4F08-7104-4AA3-B552-01FDA555DF72', 'EA4/EA69.htm'],
+['2E75DD49-DA7D-46A1-B6AB-181AA964F3AA', 'EA4/EA70.htm'],
+['76E3C356-57BD-41B5-9884-80335A774E80', 'EA4/EA71.htm'],
+['5774A070-B372-4C19-BFA3-229684913C28', 'EA4/EA72.htm'],
+['28B3F39E-8628-4E6C-8B95-236EA407D482', 'EA4/EA73.htm'],
+['1C16A8F2-D59B-43A5-86C9-7D5914EDD291', 'EA4/EA74.htm'],
+['D0D4216C-5DE5-464B-B741-2E39ED2CD25A', 'EA4/EA75.htm'],
+['899AB82C-3741-4705-97AD-4C52779763A7', 'EA4/EA76.htm'],
+['06307622-BF00-4676-9A19-80C83E20FEA6', 'EA4/EA77.htm'],
+]);
+
+		function switchProjectProperties()
+		{
+			if (document.getElementById("proj00").style.display == "none")
+			{
+				document.getElementById("proj00").style.display = "revert";
+				document.getElementById("proj01").style.display = "revert";
+				document.getElementById("proj02").style.display = "revert";
+				document.getElementById("proj03").style.display = "revert";
+				document.getElementById("proj04").style.display = "revert";
+				document.getElementById("proj05").style.display = "revert";
+			}
+			else
+			{
+				document.getElementById("proj00").style.display = "none";
+				document.getElementById("proj01").style.display = "none";
+				document.getElementById("proj02").style.display = "none";
+				document.getElementById("proj03").style.display = "none";
+				document.getElementById("proj04").style.display = "none";
+				document.getElementById("proj05").style.display = "none";
+			}
+		}
+
+		function switchAdvancedProperties()
+		{
+
+			if (document.getElementById("adv00").style.display == "none")
+			{
+				document.getElementById("adv00").style.display = "revert";
+				document.getElementById("adv01").style.display = "revert";
+			}
+			else
+			{
+				document.getElementById("adv00").style.display = "none";
+				document.getElementById("adv01").style.display = "none";
+			}
+		}
+
+		function initPage()
+        {
+			const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const guidlink = urlParams.get('guid');
+
+            if (guidlink != null)
+            {
+                var link = guidlink.toUpperCase();
+                var pageredir = guid_look.get(link);
+
+                if (pageredir != null)
+				{
+                    window.location.replace("EARoot/" + pageredir);
+                    return;
+                }
+            }
+
+			var divs = document.getElementsByClassName("ObjectDetailsNotes");
+			for (var j = 0; j < divs.length; j++)
+			{
+				var tmpStr = divs[j].innerHTML;
+				tmpStr = tmpStr.replace(/&gt;/g, ">");
+				tmpStr = tmpStr.replace(/&lt;/g, "<");
+
+				tmpStr = tmpStr.replace(/#gt;/g, "&gt;");
+				tmpStr = tmpStr.replace(/#lt;/g, "&lt;");
+
+				divs[j].innerHTML = tmpStr;
+			}
+
+            if (document.getElementById('TableGroup') != null)
+            {
+                toggleItem(document.getElementById('TableGroup').getElementsByTagName('li')[0].id.replace("Title", ""));
+            }
+
+        }
+</script>
+<style>
+
+</style>
+</head>
+<body onload="initPage();">
+<div class="section group" >
+
+		<div class="col span_2_of_2 header_frame">
+			<h1> Model </h1>
+			<img class="header_image" src="images/ea-banner.png" align="right" alt="Header Image" />
+		</div>
+		<div class="col span_2_of_2 breadcrumb_frame">
+			<p></p>
+		</div>
+		
+		<table class="contentmaintable">
+			<!-- <tfoot>
+				<tr>
+					<td>foot1</td>
+					<td>foot2</td>
+				</tr>
+			</tfoot> -->
+			<tbody>
+				<tr>
+					<td class="indexcell">
+						<div class="projectBrowserTitle">Project: </div>
+						<ul>
+<li><img src="images/31.png" alt="Package"/> <a href="./EARoot/EA1/EA3.htm">Diagramy przypadków użycia</a></li>
+<li><img src="images/31.png" alt="Package"/> <a href="./EARoot/EA2/EA17.htm">Diagramy klas</a></li>
+<li><img src="images/31.png" alt="Package"/> <a href="./EARoot/EA3/EA38.htm">Diagramy czynności</a></li>
+<li><img src="images/31.png" alt="Package"/> <a href="./EARoot/EA4/EA67.htm">Diagramy sekwencji</a></li>
+</ul>
+
+					</td>
+					<td class="contentcell">	
+						<div class="welcome_message">
+						<h2>Welcome to your model</h2>
+						<p>To get started navigate through the model via the index on the left</p> 
+						</div>
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+
+</div>
+</body>
+</html>
